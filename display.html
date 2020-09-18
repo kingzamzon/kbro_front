@@ -1,0 +1,215 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js "></script>
+  </head>
+  <body>
+    <div id="app">
+      <table border="1" width="100%" style="border-collapse: collapse">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>State</th>
+          <th>City</th>
+        </tr>
+
+        <tr v-for="user in users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.state }}</td>
+          <td>{{ user.city }}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+  <style>
+    body {
+    }
+    .holder {
+      width: 300px;
+      height: 30px;
+      margin-top: -15px;
+    }
+    .form {
+      flex: 1;
+      margin-left: 100px;
+      margin-top: 50px;
+    }
+    .wrapper {
+      background-color: rgb(248, 247, 245);
+      margin-left: -10px;
+      height: 700px;
+
+      margin-right: -10px;
+      display: flex;
+    }
+    .wrap {
+      flex: 1;
+    }
+    .header {
+      background: white;
+    }
+    .aheader {
+      margin-top: 60px;
+      color: black;
+      font-size: 70px;
+      margin-left: 120px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    }
+    .bheader {
+      color: black;
+      font-size: 30px;
+      margin-left: 120px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      color: gray;
+    }
+    .nav {
+      display: flex;
+    }
+    .nav1 {
+      flex: 5;
+      margin-left: 30px;
+      color: rgb(80, 80, 204);
+      font-size: 25px;
+    }
+    .nav1 a {
+      text-decoration: none;
+      color: rgb(219, 123, 219);
+    }
+    .navia {
+      flex: 1.5;
+      color: rgb(155, 41, 41);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: 20px;
+    }
+    .navia a {
+      text-decoration: none;
+      color: rgb(219, 123, 219);
+    }
+    .navia a:hover {
+      color: gray;
+    }
+
+    .navib {
+      flex: 1;
+      color: rgb(155, 41, 41);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: 20px;
+    }
+    .navib a {
+      text-decoration: none;
+      color: rgb(219, 123, 219);
+    }
+    .navib a:hover {
+      color: gray;
+    }
+    .navic {
+      flex: 1;
+      color: rgb(155, 41, 41);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: 20px;
+    }
+    .navic a {
+      text-decoration: none;
+      color: rgb(219, 123, 219);
+    }
+    .navic a:hover {
+      color: gray;
+    }
+    .navii {
+      flex: 1;
+      color: rgb(155, 41, 41);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: 20px;
+    }
+    .navii a {
+      text-decoration: none;
+      color: rgb(219, 123, 219);
+    }
+    .navia a:hover {
+      color: gray;
+    }
+    .navii a {
+      text-decoration: none;
+      color: rgb(155, 41, 41);
+    }
+    .placeholder {
+      margin-top: 100px;
+      margin-left: 120px;
+    }
+    .holder {
+      height: 40px;
+      width: 300px;
+      margin-left: -5px;
+    }
+    .logo {
+      margin-left: 50px;
+      margin-top: 30px;
+      padding-left: 70px;
+    }
+    .select {
+      height: 40px;
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+    .btns {
+      height: 40px;
+      background-color: rgb(155, 41, 41);
+      box-shadow: 5px 5px 10px 10px white;
+      color: white;
+    }
+    .mar {
+      margin-top: 10px;
+      width: 300px;
+      color: rgb(104, 101, 101);
+      font-family: cursive;
+    }
+    .error {
+      border: 1px solid gray;
+      box-shadow: 1px 1px 5px 5px silver;
+      width: 250px;
+      color: red;
+    }
+    .f-img {
+      margin-left: 60px;
+    }
+  </style>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        users: [],
+      },
+      created() {
+        this.getForm();
+      },
+      methods: {
+        getForm: function () {
+          console.log("create form");
+
+          axios({
+            method: "get",
+            url: "api/contacts.php",
+            // data: formData,
+            config: { headers: { "Content-Type": "multipart/form-data" } },
+          })
+            .then(function (response) {
+              // handle success
+              app.users = response.data;
+              console.log(response.data);
+            })
+            .catch(function (response) {
+              console.log(response);
+            });
+        },
+      },
+    });
+  </script>
+</html>
