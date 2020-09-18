@@ -2,6 +2,7 @@
 <html lang="zxx">
 
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="">
@@ -39,7 +40,7 @@
                     <div class="container">
                         <!--logo-->
                         <a class="logo" href="#">
-                            <h4>
+                            <h4 style="color:purple; font-size:40px;">
                             Adannar
                             </h4>
                         </a>
@@ -51,19 +52,19 @@
                         <div class="collapse navbar-collapse" id="navbarContent">
                             <ul class="navbar-nav mx-auto text-center">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#" data-scroll-nav="0">Home</a>
+                                    <a class="nav-link active" href="#" data-scroll-nav="0"style=color:purple;>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-scroll-nav="1">How Does It Work</a>
+                                    <a class="nav-link" href="#" data-scroll-nav="1"style=color:purple;>How Does It Work</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-scroll-nav="2">Resellers</a>
+                                    <a class="nav-link" href="#" data-scroll-nav="2" style=color:purple;>Resellers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-scroll-nav="3">Suppliers</a>
+                                    <a class="nav-link" href="#" data-scroll-nav="3" style=color:purple;>Suppliers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-scroll-nav="4">Register Here</a>
+                                    <a class="nav-link" href="#" data-scroll-nav="4"style=color:purple;>Register Now</a>
                                 </li>
                             </ul>
                         </div>
@@ -82,7 +83,7 @@
                     <div class="caption d-table">
                         <div class="d-table-cell align-middle">
                             <h1>Earn From Home.</h1>
-                            <p>Start with zero investment to earn from home sell and resell with adannar today.</p>
+                            <p >Start with zero investment to earn from home sell and resell with adannar today.</p>
                             <div class="hero-btn3">
                                 <a href="#">
                                     <img src="assets/images/app-store-btn.png" class="img-fluid" alt="image">
@@ -96,7 +97,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="caption-img text-center">
-                        <img src="assets/images/man.png" class="img-fluid" alt="image">
+                        <img src="assets/images/face.png" class="img-fluid" alt="image">
                     </div>
                 </div>
             </div>
@@ -115,7 +116,7 @@
                 </div>
                 <!--end heading-->
             </div>
-            <div class="row">
+            <div class="row" fade-up>
                 <!--start about single-->
                 <div class="col-md-4">
                     <div class="about-single text-center">
@@ -312,6 +313,9 @@
                             </div>
                             <!--end why choose single-->
                         </div>
+                        <div class="hero-btn">
+                            <a href="#">Register Here</a>
+                        </div>
                     </div>
                 </div>
                 <!--end why choose content-->
@@ -419,9 +423,9 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <label for="business">Bussiness name*</label>
+                                <label for="business">Bussiness name</label>
                                 <input type="text" class="form-control" id="business" name="business"
-                                    placeholder="Enter business name*" required="required"
+                                    placeholder="Enter business name*/suppliers only" required="required"
                                     data-error="valid business name is required." v-model="business">
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -474,6 +478,13 @@
                                     <option>Zamfara</option>
                                 </select>
                                 <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-check form-group">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="position: absolute; 
+                                margin-top: -1rem;">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Are You A Supplier?
+                                </label>
                             </div>
                             <input type="button" @click="createForm()" value="Register" class="contact-form-btn">
                             <div class="messages"></div>
@@ -648,6 +659,7 @@
            // handle success
            app.form_success = true;
            console.log(response)
+        //    this.resetForm();
    
          }).catch(function (response) {
            console.log(response)
