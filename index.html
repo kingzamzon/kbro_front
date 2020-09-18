@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!--responsive css-->
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js "></script>
 </head>
 
 <body>
@@ -36,7 +38,11 @@
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                         <!--logo-->
-                        <a class="logo" href="#">Adannar</a>
+                        <a class="logo" href="#">
+                            <h4>
+                            Adannar
+                            </h4>
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar"><i class="icofont-navigation-menu"></i></span>
@@ -57,7 +63,7 @@
                                     <a class="nav-link" href="#" data-scroll-nav="3">Suppliers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-scroll-nav="5">Contact</a>
+                                    <a class="nav-link" href="#" data-scroll-nav="4">Register Here</a>
                                 </li>
                             </ul>
                         </div>
@@ -77,9 +83,13 @@
                         <div class="d-table-cell align-middle">
                             <h1>Earn From Home.</h1>
                             <p>Start with zero investment to earn from home sell and resell with adannar today.</p>
-                            <div class="hero-btn">
-                                <a href="#">Shop Now<i class="fa fa-long-arrow-right"></i></a>
-                                <a href="#">Shop Now<i class="fa fa-long-arrow-right"></i></a>
+                            <div class="hero-btn3">
+                                <a href="#">
+                                    <img src="assets/images/app-store-btn.png" class="img-fluid" alt="image">
+                                </a>
+                                <a href="#">
+                                    <img src="assets/images/google-play-btn.png" alt="image">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -94,7 +104,7 @@
     </section>
     <!--end hero area-->
     <!--start about area-->
-    <section id="about-area" class="two">
+    <section id="about-area" class="two" data-scroll-index="1">
         <div class="container">
             <div class="row">
                 <!--start heading-->
@@ -138,7 +148,7 @@
     </section>
     <!--end about area-->
     <!--start why choose area-->
-    <section id="why-choose-area" class="bg-gray two">
+    <section id="why-choose-area" class="bg-gray two" data-scroll-index="2">
         <div class="container">
             <div class="row">
                 <!--start why choose image-->
@@ -218,7 +228,7 @@
     </section>
     <!--end why choose area-->
     <!--start why choose area-->
-    <section id="why-choose-area" class="two">
+    <section id="why-choose-area" class="two" data-scroll-index="3">
         <div class="container">
             <div class="row">
                 <!--start why choose content-->
@@ -367,13 +377,14 @@
     </section>
     <!--end facilities area-->
     <!--start contact area-->
-    <section id="contact-area" data-scroll-index="5">
+    <section id="contact-area" data-scroll-index="4">
         <div class="container">
             <div class="row">
                 <!--start heading-->
                 <div class="col-lg-8">
                     <div class="sec-heading">
-                        <h2>Contact with us</h2>
+                        <h2>Register Now</h2>
+                        <p>We Will Get In Touch With You</p>
                     </div>
                 </div>
                 <!--end heading-->
@@ -381,62 +392,100 @@
             <div class="row">
                 <!--start contact form-->
                 <div class="col-lg-8 col-md-7">
+                    <div id="app">
                     <div class="contact-form">
-                        <form>
+                        <form novalidate="true">
+                            <div v-if="form_success">
+                                Successfully Registered
+                            </div>
                             <div class="form-group">
                                 <label for="name">Name*</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name*"
-                                    required="required" data-error="name is required.">
+                                    required="required" data-error="name is required." v-model="name">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email*</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Enter email*" required="required"
-                                    data-error="valid email is required.">
+                                    data-error="valid email is required." v-model="email">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email">Phone number*</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter email*" required="required"
-                                    data-error="valid email is required.">
+                                <label for="phone">Phone number*</label>
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                    placeholder="Enter phone number*" required="required"
+                                    data-error="valid phone number is required." v-model="phone">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email">Bussiness name*</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter email*" required="required"
-                                    data-error="valid email is required.">
+                                <label for="business">Bussiness name*</label>
+                                <input type="text" class="form-control" id="business" name="business"
+                                    placeholder="Enter business name*" required="required"
+                                    data-error="valid business name is required." v-model="business">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email">City*</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter email*" required="required"
-                                    data-error="valid email is required.">
+                                <label for="city">City*</label>
+                                <input type="text" class="form-control" id="city" name="city"
+                                    placeholder="Enter city*" required="required"
+                                    data-error="valid city is required." v-model="city">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email">State*</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter email*" required="required"
-                                    data-error="valid email is required.">
+                                <label for="state">State*</label>
+                                <select class="form-control" id="state" name="state" required="required" v-model="state">  
+                                    <option>Abuja</option>
+                                    <option>Abia</option>
+                                    <option>Adamawa</option>
+                                    <option>Akwa Ibom</option>
+                                    <option>Anambra</option>
+                                    <option>Bauchi</option>
+                                    <option>Bayelsa</option>
+                                    <option>Benue</option>
+                                    <option>Borno</option>
+                                    <option>Cross River</option>
+                                    <option>Delta</option>
+                                    <option>Ebonyi</option>
+                                    <option>Edo</option>
+                                    <option>Ekiti</option>
+                                    <option>Enugu</option>
+                                    <option>Gombe</option>
+                                    <option>Imo</option>
+                                    <option>Jigawa</option> 
+                                    <option>Kaduna</option>
+                                    <option>Kano</option>
+                                    <option>Katsina</option>
+                                    <option>Kebbi</option>
+                                    <option>Kogi</option>
+                                    <option>Kwara</option>
+                                    <option>Lagos</option>
+                                    <option>Nassarawa</option>
+                                    <option>Niger</option>
+                                    <option>Ogun</option>
+                                    <option>Ondo</option>
+                                    <option>Osun</option>
+                                    <option>Oyo</option>
+                                    <option>Plateau</option>
+                                    <option>Rivers</option>
+                                    <option>Sokoto</option>
+                                    <option>Taraba</option>
+                                    <option>Yobe</option>
+                                    <option>Zamfara</option>
+                                </select>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <button type="submit">Submit Now</button>
+                            <input type="button" @click="createForm()" value="Register" class="contact-form-btn">
                             <div class="messages"></div>
                         </form>
+                    </div>
                     </div>
                 </div>
                 <!--end contact form-->
                 <!--start contact information-->
                 <div class="col-lg-4 col-md-5">
                     <div class="cont-info">
-                        <div class="cont-info-single">
-                            <h5><i class="icofont-google-map"></i> Address:</h5>
-                            <p>Maount View, Oval Road <br> New York, USA</p>
-                        </div>
+                        
                         <div class="cont-info-single">
                             <h5><i class="icofont-email"></i> Email:</h5>
                             <p>hello@adannar.com</p>
@@ -460,7 +509,9 @@
                     <!--start footer single-->
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-single">
-                            <img src="assets/images/logo.png" class="img-fluid" alt="" />
+                            <h4>
+                                Adannar
+                                </h4>
                             <p>Nigeria's first online reselling platform. Browse through, pick, share and sell.</p>
                         </div>
                     </div>
@@ -524,6 +575,96 @@
     <script src="assets/js/validator.min.js"></script>
     <!--main js-->
     <script src="assets/js/custom.js"></script>
+
+    <script>
+        const app = new Vue({
+         el: '#app',
+         data: {
+           errors: [],
+           name: '',
+           business: '',
+           phone: '',
+           email: '',
+           state: '',
+           city: '',
+           formdata: [],
+           form_success: false
+         },
+     methods: {
+       checkForm: function (e) {
+         this.errors = [];
+   
+         if (!this.name) {
+           this.errors.push("Name required.");
+         }
+         if (!this.business) {
+           this.errors.push("business required.");
+         }
+         if (!this.phone) {
+           this.errors.push("phone required.");
+         }
+         if (!this.state) {
+           this.errors.push("state required.");
+         }
+         if (!this.city) {
+           this.errors.push("city required.");
+         }
+         if (!this.email) {
+           this.errors.push('Email required.');
+         } else if (!this.validEmail(this.email)) {
+           this.errors.push('Valid email required.');
+         }
+   
+         if (!this.errors.length) {
+           return true;
+         }else  {
+           console.log('no error')
+         }
+         e.preventDefault();
+       },
+       validEmail: function (email) {
+         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+         return re.test(email);
+       },
+       createForm: function() {
+         console.log('create form')
+         this.checkForm()
+         let formData = new FormData();
+         console.log("name", this.name)
+   
+         formData.append('name', this.name)
+         formData.append('business', this.business)
+         formData.append('phone', this.phone)
+         formData.append('email', this.email)
+         formData.append('state', this.state)
+         formData.append('city', this.city)
+   
+         axios({
+           method: 'post',
+           url: 'api/contacts.php',
+           data: formData,
+           config: { headers: {'Content-Type': 'multipart/form-data' }}
+         }).then(function (response) {
+           // handle success
+           app.form_success = true;
+           console.log(response)
+   
+         }).catch(function (response) {
+           console.log(response)
+         })
+       },
+       resetForm: function() {
+           this.name = '';
+           this.email = '';
+           this.country = '';
+           this.city = '';
+           this.job = '';
+   
+       }
+     }
+   })
+   
+    </script>
 </body>
 
 </html>

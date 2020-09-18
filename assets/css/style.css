@@ -1195,6 +1195,20 @@ p {
     background-color: #fb4f31;
 }
 
+.contact-form-btn {
+    background-color: #ff6348;
+    padding: 15px 30px;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+    border: 0;
+    font-family: 'Barlow', sans-serif
+}
+
+.contact-form-btn:hover {
+    background-color: #fb4f31;
+}
+
 .help-block.with-errors li {
     color: #ff0000;
     margin: 4px 0 0;
